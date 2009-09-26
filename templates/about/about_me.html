@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+About Me
+{% endblock %}
+
+{% block content %}
+<h1>About Me</h1>
+
+<h3>{{ card.last_name }} {{ card.first_name }} {{ card.second_name }}</h3>
+<p><strong>``</strong>{{ card.bio }}<strong>``</strong></p>
+<img src="/static/mail.png"/>
+    <a href="mailto:{{card.email}}">{{card.email}}</a><br/>
+<img src="/static/mobile-phone.png"/>{{card.phone}}<br/>
+<img src="/static/balloon.png"/>{{card.jid}}<br/>
+<img src="/static/balloon-twitter.png"/>
+    twitter.com/<a href="http://twitter.com/{{card.twitter}}" target="_blank">
+        {{card.twitter}}</a><br/>
+<br/>
+<br/>
+<br/>
+<div style="float: right;">
+    <a href="/accounts/logout/?next=/about/">Logout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+[
+    {
+        "pk": 1, 
+        "model": "about.biocard", 
+        "fields": {
+            "bio": "born to live", 
+            "first_name": "Dmitry", 
+            "last_name": "Utkin", 
+            "twitter": "gothy", 
+            "jid": "dmitry.utkin@gmail.com", 
+            "email": "dmitry.utkin@gmail.com", 
+            "phone": "+380661459162", 
+            "second_name": "Igorevich"
+        }
+    }
+]

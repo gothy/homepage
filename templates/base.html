@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>{% block title %}I'm a title!{% endblock %}</title>
+    <style>
+    html,body{margin:0;padding:0}
+    div#container{text-align:center; width:600px; margin:0 auto;}
+    </style>
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+    <div id="container">
+        <div id="wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
