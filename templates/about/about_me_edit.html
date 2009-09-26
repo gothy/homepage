@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit About
+{% endblock %}
+
+{% block content %}
+<h1>Edit About</h1>
+<form method="POST">
+<table>
+    {{form.as_table}}
+</table>
+<input type="submit" value="Update"/>
+</form>
+<br/>
+<br/>
+<br/>
+<div style="float: right;">
+    <a href="/accounts/logout/?next=/about/">Logout</a>
+</div>
+{% endblock %}

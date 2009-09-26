@@ -6,9 +6,8 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from django.test import TestCase
-from models import BlankValueException
-from models import Biocard
-from views import about_view
+from models import BlankValueException, Biocard
+from views import about_view, about_edit_view
 
 class BiocardModelTestCase(TestCase):
     'tests for Biocard model'
@@ -54,7 +53,7 @@ class AboutViewTestCase(TestCase):
                                 )
     
     def tearDown(self):
-        pass
+        User.objects.get(username='user').delete()
     
     def test_response(self):
         'testing auth and content containing substring'
@@ -64,3 +63,52 @@ class AboutViewTestCase(TestCase):
         response = self.client.get(reverse(about_view))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.card.first_name)#check data from fixture
+
+class AboutEditViewTestCase(TestCase):
+    'tests for about edit view'
+    def setUp(self):
+        'prepare biocard for testing and a client to do requests'
+        self.client = Client()
+        self.user = User.objects.create_user('user', 'user@host.com', 'pass')
+        self.card = Biocard.objects.order_by('id')[0]
+        if not self.card:
+            self.card, created = Biocard.objects.get_or_create(
+                                    first_name='first', 
+                                    last_name='last'
+                                )
+    
+    def tearDown(self):
+        User.objects.get(username='user').delete()
+    
+    def test_response(self):
+        'testing auth and content containing substring'
+        response = self.client.get(reverse(about_edit_view))
+        self.assertEqual(response.status_code, 302)#redirect to auth
+        self.client.login(username='user', password='pass')
+        response = self.client.get(reverse(about_edit_view))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, self.card.first_name)
+        reqdata = {
+                  'first_name': 'ololo', 
+                  'second_name': 'alala',
+                  'last_name': 'ululu',
+                  'bio': 'biomachine',
+                  'phone': '+3800000000',
+                  'email': 'thisis@myemail.com',
+                  'jid': 'thisis@myjid.com',
+                  'twitter': 'impopular'
+        }
+        response = self.client.post(reverse(about_edit_view), reqdata)
+        self.assertNotContains(response, 'This field is required', status_code=302)
+        reqdata['first_name'] = ''
+        response = self.client.post(reverse(about_edit_view), reqdata)
+        self.assertContains(response, 'This field is required', count=1, status_code=200)
+        reqdata['last_name'] = ''
+        response = self.client.post(reverse(about_edit_view), reqdata)
+        self.assertContains(response, 'This field is required', count=2, status_code=200)
+        response = self.client.get(reverse(about_view))
+        reqdata['first_name'] = 'ololo'
+        reqdata['last_name'] = 'alala'
+        for key, value in reqdata.items():
+            self.assertContains(response, value)
+
