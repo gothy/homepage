@@ -74,6 +74,10 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'homepage.urls'
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'homepage.context_processors.settings_processor',
+)
+
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -87,5 +91,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'homepage.about',
-    'homepage.logger'
+    'homepage.logger',
+    'homepage.contextproc'
 )

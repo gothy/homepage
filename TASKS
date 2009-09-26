@@ -13,6 +13,8 @@
 
   4. template context створити template-context-processor який додає
 django.settings в контекст
+> 1 h
+
   5. forms - створити сторінку з формою де можна редагувати дані, що показані
 на першій сторінці
   6. forms-widgets - для дати народження на тій же сторінці зробити widget

@@ -13,4 +13,8 @@ def about_view(request):
     except Biocard.DoesNotExist:
         raise Http404
 
-    return render_to_response('about/about_me.html', locals())
+    return render_to_response(
+        'about/about_me.html', 
+        locals(), 
+        context_instance=RequestContext(request)
+    )

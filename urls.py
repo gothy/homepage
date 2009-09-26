@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^about/', include('homepage.about.urls')),
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page':'/about/'}),
+    (r'^tests/contextproctest/$', include('homepage.contextproc.urls')),
     # Example:
     # (r'^homepage/', include('homepage.foo.urls')),
 
