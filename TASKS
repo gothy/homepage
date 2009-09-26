@@ -17,8 +17,12 @@ django.settings в контекст
 
   5. forms - створити сторінку з формою де можна редагувати дані, що показані
 на першій сторінці
+> 1.5 h (writing tests took a lot)
+
   6. forms-widgets - для дати народження на тій же сторінці зробити widget
 календарика
+> ? h (added field birth_date and a jquery datepicker, but no forms.widget usage)
+
   7. forms-model-extra - (всі попередні задачі робились же через
 forms.ModelForm? ;)
          * зробити так, щоб порядок полів в формі інвертувався

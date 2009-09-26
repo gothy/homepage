@@ -11,6 +11,7 @@ class Biocard(models.Model):
     first_name = models.CharField(max_length=100, blank=False)
     second_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=False)
+    birth_date = models.DateField(max_length=10, blank=False, null=True)
     bio = models.TextField(blank=True, help_text='short biography')
     phone = models.CharField(max_length=15, blank=True)
     email = models.EmailField(max_length=100, blank=True)

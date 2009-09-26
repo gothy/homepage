@@ -35,6 +35,7 @@ def about_edit_view(request):
             card.first_name = form.cleaned_data['first_name']
             card.second_name = form.cleaned_data['second_name']
             card.last_name = form.cleaned_data['last_name']
+            card.birth_date = form.cleaned_data['birth_date']
             card.bio = form.cleaned_data['bio']
             card.phone = form.cleaned_data['phone']
             card.email = form.cleaned_data['email']

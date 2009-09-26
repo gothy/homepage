@@ -92,6 +92,7 @@ class AboutEditViewTestCase(TestCase):
                   'first_name': 'ololo', 
                   'second_name': 'alala',
                   'last_name': 'ululu',
+                  'birth_date': '1986-04-11',
                   'bio': 'biomachine',
                   'phone': '+3800000000',
                   'email': 'thisis@myemail.com',

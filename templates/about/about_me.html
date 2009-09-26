@@ -8,6 +8,9 @@ About Me
 <h1>About Me</h1>
 
 <h3>{{ card.last_name }} {{ card.first_name }} {{ card.second_name }}</h3>
+{% if card.birth_date %} 
+    {{ card.birth_date }}
+{% endif %}
 <p><strong>``</strong>{{ card.bio }}<strong>``</strong></p>
 <img src="/static/mail.png"/>
     <a href="mailto:{{card.email}}">{{card.email}}</a><br/>
