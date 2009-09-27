@@ -13,3 +13,4 @@ class BiocardForm(forms.ModelForm):
     
     class Meta:
         model = Biocard
+BiocardForm.base_fields.keyOrder.reverse() #reverse fields, comment to remove

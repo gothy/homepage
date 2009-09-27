@@ -26,6 +26,8 @@ django.settings в контекст
   7. forms-model-extra - (всі попередні задачі робились же через
 forms.ModelForm? ;)
          * зробити так, щоб порядок полів в формі інвертувався
+> 2.5 h (of googling and experimenting :( )
+
   8. template-tags - написати тег що приймає будь-який об'єкт та рендерит
 посилання на його редагування в адмінці ({% edit_list request.user %})
   9. commands - написати django команду що друкує всі моделі проекту і
