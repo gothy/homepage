@@ -75,6 +75,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'homepage.urls'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
     'homepage.context_processors.settings_processor',
 )
 
@@ -90,8 +91,10 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.admin',
     'django_evolution',
     'homepage.about',
     'homepage.logger',
-    'homepage.contextproc'
+    'homepage.contextproc',
+    'homepage.customtagtest'
 )

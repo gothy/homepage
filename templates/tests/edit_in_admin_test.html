@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load edit_in_admin %}
+
+{% block title %}
+edit_in_admin test
+{% endblock %}
+
+{% block content %}
+user={{ request.user }}
+{% edit_in_admin request.user%}<br/>
+card={{card}} {% edit_in_admin card %}
+{% endblock %}

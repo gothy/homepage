@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from django.conf import settings
 from django.conf.urls.defaults import *
@@ -10,8 +11,11 @@ urlpatterns = patterns('',
     (r'^$', 'django.views.generic.simple.redirect_to', {'url': '/about/'}),
     (r'^about/', include('homepage.about.urls')),
     (r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page':'/about/'}),
+    (r'^accounts/logout/$', 'django.contrib.auth.views.logout', 
+        {'next_page':'/about/'}
+    ),
     (r'^tests/contextproctest/$', include('homepage.contextproc.urls')),
+    (r'^tests/customtagtest/$', 'homepage.customtagtest.views.test_view'),
     # Example:
     # (r'^homepage/', include('homepage.foo.urls')),
 
@@ -20,7 +24,7 @@ urlpatterns = patterns('',
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # (r'^admin/(.*)', admin.site.root),
+    url(r'^admin/(.*)', admin.site.root, name='admin'),
 )
 
 if settings.DEBUG:

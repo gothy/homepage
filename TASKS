@@ -30,6 +30,8 @@ forms.ModelForm? ;)
 
   8. template-tags - написати тег що приймає будь-який об'єкт та рендерит
 посилання на його редагування в адмінці ({% edit_list request.user %})
+> 3 h (dirty url used due to django 1.0.2 bug with reversing admin urls)
+
   9. commands - написати django команду що друкує всі моделі проекту і
 кількість об'єктів в кожній
  10. signals - написати обробник сигналу, який для кожної моделі створює
