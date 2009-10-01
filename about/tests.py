@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 from django.test import TestCase
-from models import BlankValueException, Biocard
+from models import BlankValueException, Biocard, DataAction
 from views import about_view, about_edit_view
 
 class BiocardModelTestCase(TestCase):
@@ -113,3 +113,39 @@ class AboutEditViewTestCase(TestCase):
         for key, value in reqdata.items():
             self.assertContains(response, value)
 
+class ModelSignalsTestCase(TestCase):
+    'tests for signal listeners on create,save and delete models'
+    def setUp(self):
+        'set counters before db manipulations'
+        self.created_count = DataAction.objects.filter(action_type='created').count()
+        self.saved_count = DataAction.objects.filter(action_type='saved').count()
+        self.deleted_count = DataAction.objects.filter(action_type='deleted').count()
+    
+    def tearDown(self):
+        pass
+        
+    def test_signal_ops(self):
+        #create instance
+        self.card = Biocard()
+        #make sure it's creation was logged
+        self.assertEquals(
+            self.created_count+1, 
+            DataAction.objects.filter(action_type='created').count()
+        )
+        self.card.first_name = 'first'
+        self.card.last_name = 'last'
+        #save instance
+        self.card.save()
+        #make sure it's saving was logged
+        self.assertEquals(
+            self.saved_count+1, 
+            DataAction.objects.filter(action_type='saved').count()
+        )
+        #and delete
+        self.card.delete()
+        #make sure it's deletion was logged
+        self.assertEquals(
+            self.deleted_count+1, 
+            DataAction.objects.filter(action_type='deleted').count()
+        )
+        
