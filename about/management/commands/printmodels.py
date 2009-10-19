@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#import inspect
-#import django.db.models
 from django.db.models.loading import get_models
 from django.core.management.base import BaseCommand
 
